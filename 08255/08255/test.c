@@ -1,14 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 
 #include<stdio.h>
-#include<stdlib.h>
-
-//char * longestCommonPrefix(char ** strs, int strsSize){
-//	char *p = strs[0];
-//	for (int i = 1; i < strsSize; i++){
-//		char *q = strs[i];
-//	}
-//}
+#include<stdlib.h> 
 
 //两串字符串的最大长度
 char * longTwoCommon(char *str1, char *str2){
@@ -25,18 +18,18 @@ char * longTwoCommon(char *str1, char *str2){
 	return str1;
 }
 char * longestCommonPrefix(char ** strs, int strsSize){
+	if (strsSize == 0) return "";
 	int len = strlen(strs[0]);
-	char *res = (char *)malloc(sizeof(char)*len);
+	char *res = (char *)malloc(sizeof(char)*(len+5));
 	strcpy(res, strs[0]);
 	for (int i = 0; i < strsSize-1; i++){
-		//char *common=longTwoCommon(com, strs[i + 1]);
 		res = longTwoCommon(res, strs[i + 1]);
 	}
 	return res;
 }
                     
 int main(){
-	char *string[3] = { "flower", "flow", "flight" };
+	char *string[] = { "flower", "flow", "flight" };//"flower", "flow", "flight" 
 	int size = sizeof(string) / sizeof(string[0]);
 	//printf("%d\n", size);
 	//printf("%s\n", string[0]);
