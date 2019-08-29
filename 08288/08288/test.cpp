@@ -4,7 +4,9 @@
 #include<stdlib.h>
 #include<string.h>
 
-#if 1
+
+
+#if 0
 //38报数
 //3.     21
 //4.     1211
@@ -64,7 +66,8 @@ char * countAndSay(int n){
 				cnt++;
 			}
 			else {
-				new_str[j++] = cnt + '0';
+				new_str[j] = cnt + '0';
+				j++;
 				new_str[j] = cur_str[i + cnt - 1];
 			}
 		}
@@ -72,9 +75,43 @@ char * countAndSay(int n){
 	}
 }
 
+#endif
+
+#if 1
+//第三版 c++
+#include<cstdio>
+#include<cstdlib>
+#include<string>
+#include<iostream>
+
+using namespace std;
+
+string countAndSay(int n){
+	if (n == 1) return "1";
+	else if (n == 2) return "11";
+	else {
+		string new_str;
+		string cur_str = countAndSay(n - 1);
+		int cnt = 1;
+		int i = 0;
+		for (; i < cur_str.size(); i++){
+			if (cur_str[i] == cur_str[i + 1]){
+				cnt++;
+			}
+			else {
+				new_str = new_str+(char)(cnt + '0')+cur_str[i];
+				cnt = 1;
+			}
+		}
+		return new_str;
+	}
+}
+
+
+
 int main(){
-	char *p = countAndSay(4);
-	printf("%s\n", p);
+	string p = countAndSay(4);
+	cout << p;
 	system("pause");
 	return 0;
 }
