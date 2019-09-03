@@ -30,15 +30,24 @@ int* searchRange(int* nums, int numsSize, int target, int* returnSize){
 	//	result[0] = -1;
 	//	result[1] = -1;
 	//}
-	for (int i = s;; i--){
+	for (int i = s;; i--){ //当数组的第一个元素就是target就会堆溢出
 		if (target != nums[i]){
 			result[0] = i+1;
 			break;
 		}
+		if (i == 0){
+			result[0] = 0;
+			break;
+		}
 	}
-	for (int j = s;; j++){
+	for (int j = s;; j++){//哭了，j++之后满足第一个if 故result[1]=5;但一个if中，j->s,第二个ifj越界,交换两个if
+		
 		if (target != nums[j]){
 			result[1] = j-1;
+			break;
+		}
+		if (j == numsSize - 1){
+			result[1] = numsSize - 1;
 			break;
 		}
 	}
@@ -50,10 +59,10 @@ int* searchRange(int* nums, int numsSize, int target, int* returnSize){
 }
 
 int main(){
-	int arr[] = { 2,2 };
+	int arr[] = {1,4 };
 	int len = sizeof(arr) / sizeof(arr[0]);
 	int returnSz = 0;
-	int *s=searchRange(arr,len,2,&returnSz);
+	int *s=searchRange(arr,len,4,&returnSz);
 	for (int i = 0; i < returnSz; i++){
 		printf("%d ", s[i]);
 	}
