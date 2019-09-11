@@ -2,8 +2,9 @@
 
 #include<stdio.h>
 #include<stdlib.h>
+#include<math.h>
 
-#if 0
+#if 1
 //爬楼梯 其实就是斐波那契数列
 int climbStairs1(int i,int n){
 	if (i > n) return 0;
@@ -29,16 +30,42 @@ int climbStairs3(int n){
 	else return climbStairs3(n - 1) + climbStairs3(n - 2);
 } 
 
+//改进
+//找到第n个斐波那契数
+int climbStairs4(int n){
+	if (n == 1) return 1;
+	int first = 1;
+	int second = 2;
+	for (int i = 3; i <= n; i++){
+		int third = first + second;
+		first = second;
+		second = third;
+	}
+	return second;
+}
+
+//利用斐波那契公式
+int climbStairs5(int n){
+	double sqrt5 = sqrt(5.0);
+	double res = pow((1 + sqrt5) / 2, n + 1) - pow((1 - sqrt5) / 2, n + 1);
+	return (int)(res / sqrt5);
+}
+
+
 int main(){
 	int n = 6;
 	/*printf("%d ", climbStairs(0,n));*/
+	printf("%d ", climbStairs1(0,18));
+	printf("%d ", climbStairs2(18));
 	printf("%d ", climbStairs3(18));
+	printf("%d ", climbStairs4(18));
+	printf("%d ", climbStairs5(18));
 	system("pause");
 	return 0;
 }
 #endif 
 
-#if 1
+#if 0
 //n!
 #define N 10000
 int main()
