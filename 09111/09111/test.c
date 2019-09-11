@@ -4,7 +4,7 @@
 #include<stdlib.h>
 #include<math.h>
 
-#if 1
+#if 0
 //爬楼梯 其实就是斐波那契数列
 int climbStairs1(int i,int n){
 	if (i > n) return 0;
@@ -64,6 +64,33 @@ int main(){
 	return 0;
 }
 #endif 
+
+#if 1
+//判断子序列
+int isSubsequence(char * s, char * t){
+	char *ps = s;
+	char *pt = t;
+	while (*ps != '\0' && *pt!='\0'){
+		if (*ps == *pt){
+			ps++;
+		}
+			pt++;
+	}
+	if (*ps == '\0'){
+		return 1;
+	}
+	else return 0;
+}
+
+
+int main(){
+	int str1 = "axc";
+	int str2 = "ahbgdc";
+	printf("%d ", isSubsequence(str1, str2));
+	system("pause");
+	return 0;
+}
+#endif
 
 #if 0
 //n!
