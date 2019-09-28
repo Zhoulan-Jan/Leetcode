@@ -4,7 +4,7 @@
 #include<stdlib.h>
 
 //简单版八皇后
-#define NUM 8
+#define NUM 4
 int Q[10] = { 0 };
 void queen(int cur){
 	if (cur == NUM) {
@@ -23,7 +23,7 @@ void queen(int cur){
 					break;
 				}
 			}
-			if (ok) queen(cur + 1);
+			if (ok) queen(cur + 1);  //cur为什么会慢慢变成0呀
 		}
 	}
 }
