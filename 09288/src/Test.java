@@ -29,7 +29,7 @@ public class Test {
         head = list.addFirst(head,2);
         head = list.addFirst(head,1);
         head = list.reverseList(head);
-        System.out.println("预期结果是[5,4,3,2,1], 实际是：");
+        System.out.print("预期结果是[5,4,3,2,1], 实际是：");
         list.display(head);
     }
 

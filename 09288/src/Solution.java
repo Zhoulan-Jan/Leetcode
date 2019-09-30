@@ -39,22 +39,41 @@ public class Solution {
 
     //反转单链表
     public ListNode reverseList(ListNode head) {
-            ListNode prev = head;
-            ListNode cur = head.next;
-            ListNode pnext = cur.next;
-            ListNode newHead = null;
-            while (cur != null ) {
-                cur.next = prev;
-                prev = head.next;
-                cur = pnext;
-                if (pnext == null) {
-                    newHead = cur;
-                    break;
-                }
-                pnext = cur.next;
-                head = head.next;
+        //空链表
+        if (head ==  null) return null;
+        //只有一个元素的链表
+        if (head.next ==  null) return head;
+        //多个元素
+        ListNode prev = null;
+        ListNode cur = head;
+        ListNode pnext = cur.next;
+        ListNode newHead = null;
+        while (cur != null) {
+            pnext = cur.next;
+            if (pnext == null) {
+                newHead = cur;
             }
-            return newHead;
+            cur.next = prev;
+            prev = cur;
+            cur = pnext;
+        }
+        return newHead;
+        //error code
+//        ListNode prev = null;
+//        ListNode cur = head;
+//        ListNode pnext = cur.next;
+//        ListNode newHead = null;
+//        while (cur != null) {
+//            cur.next = prev;
+//            prev = cur;
+//            cur = pnext;
+//            if (pnext == null) {
+//                newHead = cur;
+//                break;
+//            }
+//            pnext = cur.next;
+//        }
+//        return newHead;
     }
 
     //返回链表的中间结点  链表长度的一半
