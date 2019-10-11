@@ -38,7 +38,7 @@ public class Solution {
     }
 
     //两数相加
-    //要注意进位的情况啊 如 5 + 5 = 10。思路跟大数相加一样
+    //要注意进位的情况啊 如 5 + 5 = 10 . 99 + 1 = 100 .思路跟大数相加一样
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode newHead = new ListNode(-1);
         ListNode newTail = newHead;
@@ -48,27 +48,38 @@ public class Solution {
         while (h1 != null && h2 != null) {
             int res = h1.val + h2.val + carry;
             carry = res / 10 ;
-            int ans = res % 10;
-            newTail.next = new ListNode(ans);
+            newTail.next = new ListNode(res % 10);
             newTail = newTail.next;
             h1 = h1.next;
             h2 = h2.next;
         }
 
+//        if (h2 != null) {
+//            newTail.next = new ListNode(h2.val + carry); //ListNode(h2.val + carry)存在进位情况
+//            carry = 0;
+//            h2 = h2.next;
+//            newTail = newTail.next;
+//            newTail = h2;
+//        }
+
         if (h2 != null) {
-            newTail.next = new ListNode(h2.val + carry);
-            carry = 0;
-            h2 = h2.next;
-            newTail = newTail.next;
-            newTail = h2;
+            while (h2 != null) {
+                int res = h2.val + carry;
+                carry = res / 10;
+                newTail.next = new ListNode(res % 10);
+                newTail = newTail.next;
+                h2 = h2.next;
+            }
         }
 
         if (h1 != null) {
-            newTail.next = new ListNode(h1.val + carry);
-            carry = 0;
-            h1 = h1.next;
-            newTail = newTail.next;
-            newTail = h1;
+            while (h1 != null) {
+                int res = h1.val + carry;
+                carry = res / 10;
+                newTail.next = new ListNode(res % 10);
+                newTail = newTail.next;
+                h1 = h1.next;
+            }
         }
 
         if (carry != 0 ) {

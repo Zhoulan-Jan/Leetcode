@@ -24,7 +24,7 @@ public class Test {
         Solution list = new Solution();
         ListNode head1 = null;
         //head1 = list.addFirst(head1,3);
-        head1 = list.addFirst(head1,8);
+        head1 = list.addFirst(head1,9);
         head1 = list.addFirst(head1,9);
 
 
