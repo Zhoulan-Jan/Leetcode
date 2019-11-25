@@ -7,7 +7,7 @@ public class $136 {
         Map<Integer,Integer> map = new HashMap<>();
         for (int x : nums) {
             int count = map.getOrDefault(x,0);
-            map.put(x, count+1);
+            map.put(x, count+1); //为什么count++错了
         }
         //遍历map，找到count为 1 的key
         for (Map.Entry<Integer,Integer> entry : map.entrySet()) {
