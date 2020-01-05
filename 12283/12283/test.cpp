@@ -5,6 +5,9 @@
 #include<cstdio>
 #include<cstdlib>
 #include<vector>
+#include<string>
+#include<iostream>
+#include<ctime>
 using namespace std;
 
 class Solution {
@@ -48,7 +51,7 @@ public:
 		vector<pair<int, int>> solution;
 		DFS(solutions, solution, 0, n);
 		for (auto& e : solutions) {
-			vector<string> retStr(n, string(n, '.'));
+			vector<string> retStr(n, string(n, '#'));
 			for (auto& pos : e) {
 				retStr[pos.first][pos.second] = 'Q';
 			}
@@ -57,3 +60,20 @@ public:
 		return ret;
 	}
 };
+
+int main() {
+	clock_t run_start = clock();
+	Solution s;
+	vector<vector<string>> res = s.solveNQueens(8);
+	for (int i = 0; i < res.size(); i++) {
+		for (int j = 0; j < res[i].size(); j++) {
+			cout << res[i][j] << endl;
+		}
+		cout << endl;
+	}
+	clock_t run_end = clock();
+	double runtime = ((double)run_end - (double)run_start) / CLOCKS_PER_SEC;
+	printf("Run Time: %.3f s \n", runtime);
+	system("pause");
+	return 0;
+}
