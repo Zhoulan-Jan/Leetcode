@@ -1,12 +1,5 @@
 import java.util.*;
 
-class TreeNode {
-     int val;
-     TreeNode left;
-     TreeNode right;
-     TreeNode(int x) { val = x; }
- }
-
 public class $199 {
     //深度优先搜索
     public static List<Integer> rightSideView(TreeNode root) {
