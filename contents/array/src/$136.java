@@ -1,10 +1,13 @@
 import java.util.HashMap;
 import java.util.Map;
-/*
-只出现一次的数字
+
+/**
+ * 只出现一次的数字
+ * 法一：遍历数字，并保存到map中，key对应nums[i]，value对应个数
+ * 法二：全部数字异或，最终结果就是只出现一次的数字
  */
 public class $136 {
-    //只出现一次的数字
+    //法一：map
     public static int singleNumber(int[] nums) {
         Map<Integer,Integer> map = new HashMap<>();
         for (int x : nums) {
@@ -18,5 +21,14 @@ public class $136 {
             }
         }
         return 0;
+    }
+
+    //法二：异或
+    public int singleNumber2(int[] nums) {
+        int res = 0;
+        for (int i = 0; i < nums.length; i++) {
+            res ^= nums[i];
+        }
+        return res;
     }
 }
